@@ -1,0 +1,100 @@
+<div class="landing-page">
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-content" data-aos="fade-up">
+      <h1>Transform Your Events with Premium Rentals</h1>
+      <p>Discover our exclusive collection of chairs, tables, artificial flowers, and jewelry for rent</p>
+      <button mat-raised-button color="accent" (click)="navigateToOrder()">
+        Start Renting Now
+      </button>
+    </div>
+  </section>
+
+  <!-- Categories Section -->
+  <section class="categories">
+    <h2 data-aos="fade-up">Our Rental Categories</h2>
+    <div class="categories-grid">
+      <mat-card class="category-card" *ngFor="let category of categories; let i = index" 
+                [attr.data-aos]="'fade-up'"
+                [attr.data-aos-delay]="i * 100"
+                [attr.data-aos-anchor-placement]="'top-bottom'">
+        <img mat-card-image [src]="category.image" [alt]="category.name">
+        <mat-card-content>
+          <h3>{{ category.name }}</h3>
+          <p>{{ category.description }}</p>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-button color="primary" (click)="navigateToOrder()">
+            Rent Now
+          </button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section class="features">
+    <h2 data-aos="fade-up">Why Choose Us?</h2>
+    <div class="features-grid">
+      <div class="feature" *ngFor="let i of [0,1,2,3]" 
+           [attr.data-aos]="'fade-up'"
+           [attr.data-aos-delay]="i * 100"
+           [attr.data-aos-anchor-placement]="'top-bottom'">
+        <mat-icon [ngSwitch]="i">
+          <ng-container *ngSwitchCase="0">verified</ng-container>
+          <ng-container *ngSwitchCase="1">local_shipping</ng-container>
+          <ng-container *ngSwitchCase="2">support_agent</ng-container>
+          <ng-container *ngSwitchCase="3">payments</ng-container>
+        </mat-icon>
+        <h3>
+          <ng-container [ngSwitch]="i">
+            <ng-container *ngSwitchCase="0">Premium Quality</ng-container>
+            <ng-container *ngSwitchCase="1">Fast Delivery</ng-container>
+            <ng-container *ngSwitchCase="2">24/7 Support</ng-container>
+            <ng-container *ngSwitchCase="3">Best Prices</ng-container>
+          </ng-container>
+        </h3>
+        <p>
+          <ng-container [ngSwitch]="i">
+            <ng-container *ngSwitchCase="0">All our rental items are carefully selected and maintained</ng-container>
+            <ng-container *ngSwitchCase="1">Convenient delivery and pickup services</ng-container>
+            <ng-container *ngSwitchCase="2">Our team is always here to help you</ng-container>
+            <ng-container *ngSwitchCase="3">Competitive rates for all rental items</ng-container>
+          </ng-container>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials Section -->
+  <section class="testimonials" data-aos-container>
+    <h2 data-aos="fade-up" data-aos-anchor=".testimonials">What Our Customers Say</h2>
+    <div class="testimonials-grid">
+      <mat-card class="testimonial-card" *ngFor="let testimonial of testimonials; let i = index"
+                [attr.data-aos]="'fade-up'"
+                [attr.data-aos-delay]="i * 100"
+                [attr.data-aos-anchor=".testimonials"
+                [attr.data-aos-offset]="200">
+        <mat-card-header>
+          <img mat-card-avatar [src]="testimonial.image" [alt]="testimonial.name">
+          <mat-card-title>{{ testimonial.name }}</mat-card-title>
+          <mat-card-subtitle>{{ testimonial.role }}</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+          <p>{{ testimonial.comment }}</p>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="cta">
+    <div class="cta-content" data-aos="fade-up">
+      <h2>Ready to Make Your Event Special?</h2>
+      <p>Browse our collection and start renting today</p>
+      <button mat-raised-button color="accent" (click)="navigateToOrder()">
+        Get Started
+      </button>
+    </div>
+  </section>
+</div>

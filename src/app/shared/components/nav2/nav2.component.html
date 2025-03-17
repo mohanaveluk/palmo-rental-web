@@ -1,0 +1,157 @@
+<mat-sidenav-container class="sidenav-container">
+    <mat-sidenav #drawer class="sidenav" fixedInViewport
+        [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+        [mode]="(isHandset$ | async) ? 'over' : 'side'"
+        [opened]="false">
+      <mat-toolbar>Menu {{isHandset$ | async}}</mat-toolbar>
+      <mat-nav-list>
+        <a mat-list-item routerLink="/" routerLinkActive="active" *ngIf="!isAdmin">Home</a>
+        <a mat-list-item routerLink="/about" routerLinkActive="active" *ngIf="!isAdmin">About</a>
+        <a mat-button routerLink="/products/gallery" routerLinkActive="active" *ngIf="!isAdmin">Gallery</a>
+        <a mat-button routerLink="/orders/new" routerLinkActive="active" *ngIf="!isAdmin">Order</a>
+
+        <a mat-list-item routerLink="/admview" routerLinkActive="active" *ngIf="isAdmin">Home</a>
+        <a mat-list-item routerLink="/admview/about" routerLinkActive="active" *ngIf="isAdmin">About</a>
+        <a mat-button routerLink="/admview/products/gallery" routerLinkActive="active" *ngIf="isAdmin">Gallery</a>
+        
+        <mat-expansion-panel *ngIf="isAdmin">
+          <mat-expansion-panel-header>
+            <mat-panel-title>Order</mat-panel-title>
+          </mat-expansion-panel-header>
+          <mat-nav-list>
+            <a mat-list-item routerLink="/admview/products">Products</a>
+            <a mat-list-item routerLink="/admview/ordersdb">Order Dashboard</a>
+          </mat-nav-list>
+        </mat-expansion-panel>
+
+        <!-- <mat-expansion-panel *ngIf="isLoggedIn">
+          <mat-expansion-panel-header>
+            <mat-panel-title>Exams</mat-panel-title>
+          </mat-expansion-panel-header>
+          <mat-nav-list>
+            <a mat-list-item routerLink="/exam/list">Available Tests</a>
+            <a mat-list-item routerLink="/test/history">Test History</a>
+          </mat-nav-list>
+        </mat-expansion-panel> -->
+  
+        <mat-expansion-panel *ngIf="isAdmin">
+          <mat-expansion-panel-header>
+            <mat-panel-title>Support</mat-panel-title>
+          </mat-expansion-panel-header>
+          <mat-nav-list>
+            <a mat-list-item routerLink="/admview/pricing/plans">Pricing</a>
+            <a mat-list-item routerLink="/admview/pricing/contact">Contact</a>
+            <a mat-list-item routerLink="/admview/pricing/faq">FAQ</a>
+          </mat-nav-list>
+        </mat-expansion-panel>
+      </mat-nav-list>
+    </mat-sidenav>
+    
+    <mat-sidenav-content>
+      <mat-toolbar color="primary">
+        <button
+          type="button"
+          aria-label="Toggle sidenav"
+          mat-icon-button
+          (click)="drawer.toggle()"
+          *ngIf="isHandset$ | async">
+          <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+        </button>
+        
+        <span class="logo">
+            <img src="assets/c-logo.png" alt="Logo" class="logo-img">
+        </span>
+        <a routerLink="/" class="brand">Palmo Rental</a>
+            
+        <div class="spacer"></div>
+        
+        <!-- Desktop Navigation -->
+        <div class="nav-menu" *ngIf="!(isHandset$ | async)">
+          <a mat-button routerLink="/" routerLinkActive="active" *ngIf="!isAdmin">Home</a>
+          <a mat-button routerLink="/about" routerLinkActive="active" *ngIf="!isAdmin">About</a>
+          <a mat-button routerLink="/products/gallery" routerLinkActive="active" *ngIf="!isAdmin">Gallery</a>
+          <a mat-button routerLink="/orders/new" routerLinkActive="active" *ngIf="!isAdmin">Order</a>
+
+          <a mat-button routerLink="/admview" routerLinkActive="active" *ngIf="isAdmin">Home</a>
+          <a mat-button routerLink="/admview/about" routerLinkActive="active" *ngIf="isAdmin">About</a>
+          <a mat-button routerLink="/admview/products/gallery" routerLinkActive="active" *ngIf="isAdmin">Gallery</a>
+          
+          <button mat-button [matMenuTriggerFor]="OrderMenu" *ngIf="isAdmin">
+            <div class="menu-item">
+              <span>Order</span> <mat-icon style="margin: 0px -2px">arrow_drop_down</mat-icon>
+            </div>
+          </button>
+          <mat-menu #OrderMenu="matMenu">
+            <button mat-menu-item routerLink="/admview/products">Create Product</button>
+            <button mat-menu-item routerLink="/admview/orders/new">Create Order</button>
+            <button mat-menu-item routerLink="/admview/ordersdb">Order Dashboard</button>
+          </mat-menu>
+        
+          <!-- Exams Dropdown -->
+          <!-- <button mat-button [matMenuTriggerFor]="examsMenu" *ngIf="isLoggedIn">
+            <div class="menu-item">
+                <span>Exam</span> <mat-icon style="margin: 0px -2px">arrow_drop_down</mat-icon>
+            </div>
+        </button>
+        <mat-menu #examsMenu="matMenu">
+          <button mat-menu-item routerLink="/exam/list">Available Tests</button>
+          <button mat-menu-item routerLink="/test/history">Test History</button>
+          <button mat-menu-item routerLink="/inquiry/list">Inquiry</button>
+        </mat-menu> -->
+
+          
+    
+          <!-- Support Dropdown -->
+          <button mat-button [matMenuTriggerFor]="supportMenu">
+              <div class="menu-item">
+                  <span>Support</span> <mat-icon style="margin: 0px -2px">arrow_drop_down</mat-icon>
+                </div>          
+          </button>
+          <mat-menu #supportMenu="matMenu">
+            <a mat-menu-item routerLink="/admview/pricing/plans">Pricing</a>
+            <a mat-menu-item routerLink="/admview/contact">Contact Us</a>
+            <a mat-menu-item routerLink="/admview/faq">FAQ</a>
+          </mat-menu>
+            
+
+        </div>
+        
+        <!-- User Menu -->
+         <!--
+        <div *ngIf="isLoggedIn">
+          <button mat-button [matMenuTriggerFor]="userMenu">
+            <div class="user-avatar" *ngIf="!userAvatar">{{userInitials}}</div>
+            <img *ngIf="userAvatar" [src]="userAvatar" [alt]="userName" class="user-avatar-image">
+          </button>
+          <mat-menu #userMenu="matMenu">-->
+            <!-- <div class="p-menu">Name: {{userName}}</div> -->
+            <!--<div class="user-menu-header">
+              <div class="user-info">
+                <a routerLink="/auth/profile" class="user-name">{{userName}}</a>
+                <div class="user-email">{{userEmail}}</div>
+              </div>
+            </div>
+            <mat-divider></mat-divider>            
+           
+            <button mat-menu-item routerLink="/pricing/account">
+              <mat-icon>account_circle</mat-icon>
+              <span>My Account</span>
+            </button>
+            <button mat-menu-item routerLink="/pricing/payment-history">
+              <mat-icon>history</mat-icon>
+              <span>Payment History</span>
+            </button>
+            <mat-divider></mat-divider>
+            <button mat-menu-item (click)="logout()">
+              <mat-icon>exit_to_app</mat-icon>
+              <span>Logout</span>
+            </button>
+          </mat-menu>
+        </div>
+        
+        <a mat-button routerLink="/auth/login" *ngIf="!isLoggedIn">Login</a>-->
+      </mat-toolbar>
+      
+      <ng-content></ng-content>
+    </mat-sidenav-content>
+  </mat-sidenav-container>

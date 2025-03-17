@@ -1,0 +1,76 @@
+.order-details {
+  section {
+    margin-bottom: 24px;
+
+    h3 {
+      margin: 0 0 16px;
+      color: rgba(0, 0, 0, 0.87);
+      font-size: 16px;
+      font-weight: 500;
+    }
+  }
+
+  .info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 16px;
+
+    .info-item {
+      label {
+        display: block;
+        color: rgba(0, 0, 0, 0.6);
+        font-size: 12px;
+        margin-bottom: 4px;
+      }
+
+      span {
+        font-size: 14px;
+      }
+
+      .cancelled {
+        color: #f44336;
+      }
+    }
+  }
+
+  .items-table {
+    width: 100%;
+    margin-bottom: 16px;
+
+    th {
+      font-weight: 500;
+    }
+
+    .mat-column-quantity,
+    .mat-column-price,
+    .mat-column-total {
+      width: 100px;
+      text-align: right;
+    }
+  }
+
+  .total-amount {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 16px;
+    background: #f5f5f5;
+    border-radius: 4px;
+
+    label {
+      margin-right: 16px;
+      font-weight: 500;
+    }
+
+    span {
+      font-size: 18px;
+      font-weight: 500;
+    }
+  }
+
+
+}
+
+.mat-mdc-dialog-actions {
+  padding: 2rem 1rem 1rem 0;
+}

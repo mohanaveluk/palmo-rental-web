@@ -1,0 +1,93 @@
+<h2 mat-dialog-title>Order Details</h2>
+<mat-dialog-content>
+  <div class="order-details">
+    <section>
+      <h3>Customer Information</h3>
+      <div class="info-grid">
+        <div class="info-item">
+          <label>Name:</label>
+          <span>{{order.customer.firstName}} {{order.customer.lastName}}</span>
+        </div>
+        <div class="info-item">
+          <label>Email:</label>
+          <span>{{order.customer.emailId}}</span>
+        </div>
+        <div class="info-item">
+          <label>Phone:</label>
+          <span>{{order.customer.mobileNumber}}</span>
+        </div>
+        <div class="info-item">
+          <label>Address:</label>
+          <span>
+            {{order.customer.address}}
+            <ng-container *ngIf="order.customer.aptSuite">, {{order.customer.aptSuite}}</ng-container>
+            <br>
+            {{order.customer.city}}, {{order.customer.state}} {{order.customer.zipCode}}
+          </span>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h3>Rental Information</h3>
+      <div class="info-grid">
+        <div class="info-item">
+          <label>Start Date:</label>
+          <span>{{order.rentalStartDate | date}}</span>
+        </div>
+        <div class="info-item">
+          <label>End Date:</label>
+          <span>{{order.rentalEndDate | date}}</span>
+        </div>
+        <div class="info-item">
+          <label>Status:</label>
+          <span [class.cancelled]="order.isCancelled">
+            {{order.isCancelled ? 'Cancelled' : 'Active'}}
+          </span>
+        </div>
+        <div class="info-item" *ngIf="order.comments">
+          <label>Comments:</label>
+          <span>{{order.comments}}</span>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h3>Order Items</h3>
+      <table mat-table [dataSource]="order.orderDetails" class="items-table">
+        <ng-container matColumnDef="product">
+          <th mat-header-cell *matHeaderCellDef>Product</th>
+          <td mat-cell *matCellDef="let detail">{{detail.product.name}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="quantity">
+          <th mat-header-cell *matHeaderCellDef>Quantity</th>
+          <td mat-cell *matCellDef="let detail">{{detail.quantity}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="price">
+          <th mat-header-cell *matHeaderCellDef>Price</th>
+          <td mat-cell *matCellDef="let detail">{{detail.product.price | currency}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="total">
+          <th mat-header-cell *matHeaderCellDef>Total</th>
+          <td mat-cell *matCellDef="let detail">
+            {{detail.quantity * detail.product.price | currency}}
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="['product', 'quantity', 'price', 'total']"></tr>
+        <tr mat-row *matRowDef="let row; columns: ['product', 'quantity', 'price', 'total'];"></tr>
+      </table>
+
+      <div class="total-amount">
+        <label>Total Amount:</label>
+        <span>{{order.totalAmount | currency}}</span>
+      </div>
+    </section>
+  </div>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button color="accent" mat-dialog-close>Close</button>
+</mat-dialog-actions>

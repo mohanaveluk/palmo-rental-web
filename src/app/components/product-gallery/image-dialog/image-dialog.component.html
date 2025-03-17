@@ -1,0 +1,13 @@
+<div class="image-dialog-content" mat-dialog-content>
+  <img [src]="data.image + '?auto=format&fit=crop&w=1200'" [alt]="data.title">
+  <div class="image-info">
+    <h2>{{data.title}}</h2>
+    <p>{{data.description}}</p>
+    <mat-chip-set>
+      <mat-chip>{{data.category}}</mat-chip>
+    </mat-chip-set>
+  </div>
+</div>
+<div mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Close</button>
+</div>

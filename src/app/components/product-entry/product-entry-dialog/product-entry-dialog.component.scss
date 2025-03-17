@@ -1,0 +1,15 @@
+.form-fields {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 16px 0;
+  }
+  
+  mat-form-field {
+    width: 100%;
+  }
+  
+  mat-dialog-actions {
+    padding: 20px 20px;
+    gap: 8px;
+  }

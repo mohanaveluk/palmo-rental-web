@@ -1,0 +1,136 @@
+<header class="hero">
+  <img [src]="headerImage" alt="Party Supplies" class="hero-image">
+  <div class="hero-content">
+    <h1>Create Memorable Celebrations</h1>
+    <p>Premium party supplies for every special occasion</p>
+    <div class="cta-buttons">
+      <button mat-raised-button color="primary"  (click)="navigateToOrder()">
+        <mat-icon>shopping_cart</mat-icon>
+        Rent Now
+      </button>
+      <button mat-raised-button color="accent"  (click)="navigateToGallery()">View Catalog</button>
+    </div>
+  </div>
+</header>
+
+<section class="categories">
+  <div class="container">
+    <h2>Our Premium Collections</h2>
+    <div class="category-grid">
+      <mat-card *ngFor="let category of categories1" class="category-card">
+        <div class="category-image">
+          <div class="image-navigation">
+            <button mat-icon-button class="nav-button prev" (click)="previousImage(category, $event)">
+              <mat-icon>chevron_left</mat-icon>
+            </button>
+            <button mat-icon-button class="nav-button next" (click)="nextImage(category, $event)">
+              <mat-icon>chevron_right</mat-icon>
+            </button>
+          </div>
+          <div class="image-container">
+            <img *ngFor="let image of category.images; let i = index"
+                 [src]="image.url"
+                 [alt]="image.alt"
+                 [class.active]="i === category.currentImageIndex">
+          </div>
+          <div class="image-indicators">
+            <span *ngFor="let image of category.images; let i = index"
+                  [class.active]="i === category.currentImageIndex"></span>
+          </div>
+          <div class="category-overlay">
+            <button mat-raised-button color="primary" (click)="navigateToOrder()">
+              Rent Now
+            </button>
+          </div>
+        </div>
+        <mat-card-content>
+          <h3>{{category.name}}</h3>
+          <p>{{category.description}}</p>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-button color="primary" (click)="navigateToGallery()">View Items</button>
+          <button mat-button color="accent" (click)="navigateToOrder()">Quick Rent</button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </div>
+</section>
+
+<section class="categories" style="display: none;">
+  <div class="container">
+    <h2>Our Premium Collections</h2>
+    <div class="category-grid">
+      <mat-card *ngFor="let category of categories" class="category-card">
+        <img mat-card-image [src]="category.image" [alt]="category.title">
+        <mat-card-content>
+          <h3>{{category.title}}</h3>
+          <p>{{category.description}}</p>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-button color="primary">View Items</button>
+          <button mat-button color="accent">Quick Rent</button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </div>
+</section>
+
+<section class="benefits">
+  <div class="container">
+    <h2>Why Choose Our Service</h2>
+    <div class="benefits-grid">
+      <div class="benefit">
+        <mat-icon color="primary">verified</mat-icon>
+        <h3>Premium Quality</h3>
+        <p>All items are carefully maintained and quality checked</p>
+      </div>
+      <div class="benefit">
+        <mat-icon color="primary">local_shipping</mat-icon>
+        <h3>Free Delivery</h3>
+        <p>Complimentary delivery and setup within service area</p>
+      </div>
+      <div class="benefit">
+        <mat-icon color="primary">security</mat-icon>
+        <h3>Sanitized Items</h3>
+        <p>All items are thoroughly cleaned and sanitized</p>
+      </div>
+      <div class="benefit">
+        <mat-icon color="primary">support_agent</mat-icon>
+        <h3>24/7 Support</h3>
+        <p>Round-the-clock customer service support</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="testimonials">
+  <div class="container">
+    <h2>Customer Stories</h2>
+    <div class="testimonial-grid">
+      <mat-card *ngFor="let testimonial of testimonials" class="testimonial-card">
+        <mat-card-header>
+          <img mat-card-avatar [src]="testimonial.image" [alt]="testimonial.name">
+          <mat-card-title>{{testimonial.name}}</mat-card-title>
+          <mat-card-subtitle>{{testimonial.event}}</mat-card-subtitle>          
+        </mat-card-header>
+        <mat-card-content>
+          <p class="quote">"{{testimonial.comment}}"</p>
+          <div class="rating">
+            <mat-icon *ngFor="let star of [].constructor(testimonial.rating)" color="accent">star</mat-icon>
+          </div>
+
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+</section>
+
+<section class="cta">
+  <div class="container">
+    <h2>Ready to Create Your Perfect Event?</h2>
+    <p>Browse our collection and find everything you need for your celebration</p>
+    <button mat-raised-button color="accent" class="main-cta">
+      Start Planning Your Event
+    </button>
+  </div>
+</section>

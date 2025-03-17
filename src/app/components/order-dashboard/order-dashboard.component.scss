@@ -1,0 +1,42 @@
+.order-dashboard-container {
+  mat-card {
+    margin-bottom: 20px;
+  }
+
+  .table-container {
+    max-height: 600px;
+    overflow: auto;
+  }
+
+  .orders-table {
+    width: 100%;
+
+    th.mat-header-cell {
+      background: white;
+      font-weight: bold;
+    }
+
+    .mat-column-actions {
+      width: 200px;
+      text-align: center;
+    }
+
+    .mat-column-status {
+      width: 100px;
+    }
+
+    .mat-column-totalAmount {
+      width: 120px;
+    }
+
+    .cancelled {
+      color: #f44336;
+    }
+  }
+
+  .loading-spinner {
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+  }
+}

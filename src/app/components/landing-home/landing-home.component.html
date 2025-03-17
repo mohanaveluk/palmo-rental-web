@@ -1,0 +1,118 @@
+<div class="landing-home">
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Transform Your Events with Premium Rentals</h1>
+      <p>Elevate any occasion with our luxurious collection of chairs, tables, flowers, and jewelry</p>
+      <div class="hero-buttons">
+        <button mat-raised-button color="primary" (click)="navigateToOrder()">
+          Start Your Rental
+        </button>
+        <button mat-stroked-button color="primary" routerLink="/products">
+          View Collection
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Categories Section -->
+  <section class="categories">
+    <div class="section-header">
+      <h2>Our Premium Collections</h2>
+      <p>Discover our carefully curated selection of premium rental items</p>
+    </div>
+    
+    <div class="categories-grid">
+      <mat-card class="category-card" *ngFor="let category of categories">
+        <div class="category-image">
+          <div class="image-navigation">
+            <button mat-icon-button class="nav-button prev" (click)="previousImage(category, $event)">
+              <mat-icon>chevron_left</mat-icon>
+            </button>
+            <button mat-icon-button class="nav-button next" (click)="nextImage(category, $event)">
+              <mat-icon>chevron_right</mat-icon>
+            </button>
+          </div>
+          <div class="image-container">
+            <img *ngFor="let image of category.images; let i = index"
+                 [src]="image.url"
+                 [alt]="image.alt"
+                 [class.active]="i === category.currentImageIndex">
+          </div>
+          <div class="image-indicators">
+            <span *ngFor="let image of category.images; let i = index"
+                  [class.active]="i === category.currentImageIndex"></span>
+          </div>
+          <div class="category-overlay">
+            <button mat-raised-button color="primary" (click)="navigateToOrder()">
+              Rent Now
+            </button>
+          </div>
+        </div>
+        <mat-card-content>
+          <h3>{{category.name}}</h3>
+          <p>{{category.description}}</p>
+          <ul class="feature-list">
+            <li *ngFor="let feature of category.features">
+              <mat-icon>check_circle</mat-icon>
+              <span>{{feature}}</span>
+            </li>
+          </ul>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section class="features">
+    <div class="section-header">
+      <h2>Why Choose Us</h2>
+      <p>Experience the difference with our premium rental service</p>
+    </div>
+
+    <div class="features-grid">
+      <div class="feature-card" *ngFor="let feature of features">
+        <mat-icon>{{feature.icon}}</mat-icon>
+        <h3>{{feature.title}}</h3>
+        <p>{{feature.description}}</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials Section -->
+  <section class="testimonials">
+    <div class="section-header">
+      <h2>Client Testimonials</h2>
+      <p>Hear from our satisfied customers</p>
+    </div>
+
+    <div class="testimonials-grid">
+      <mat-card class="testimonial-card" *ngFor="let testimonial of testimonials">
+        <mat-card-header>
+          <img mat-card-avatar [src]="testimonial.image" [alt]="testimonial.name">
+          <mat-card-title>{{testimonial.name}}</mat-card-title>
+          <mat-card-subtitle>{{testimonial.role}}</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+          <p>"{{testimonial.comment}}"</p>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="cta">
+    <div class="cta-content">
+      <h2>Ready to Create Your Perfect Event?</h2>
+      <p>Join our satisfied customers and experience premium rental service</p>
+      <div class="cta-buttons">
+        <button mat-raised-button color="primary" (click)="navigateToOrder()">
+          Start Renting Now
+        </button>
+        <button mat-stroked-button color="primary" routerLink="/products">
+          Browse Products
+        </button>
+      </div>
+    </div>
+  </section>
+</div>

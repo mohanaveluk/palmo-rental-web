@@ -1,0 +1,74 @@
+<div class="pricing-container">
+    <div class="pricing-header">
+      <h1>Our Rental Pricing</h1>
+      <p>Discover our premium collection with transparent pricing for your special events</p>
+    </div>
+  
+    <div class="category-filters">
+      <mat-button-toggle-group>
+        <mat-button-toggle [checked]="!selectedCategory" (change)="filterByCategory(null)">
+          <mat-icon>grid_view</mat-icon>
+          All Items
+        </mat-button-toggle>
+        <mat-button-toggle *ngFor="let category of categories" 
+                          [checked]="selectedCategory === category.id"
+                          (change)="filterByCategory(category.id)">
+          <mat-icon>{{category.icon}}</mat-icon>
+          {{category.name}}
+        </mat-button-toggle>
+      </mat-button-toggle-group>
+    </div>
+  
+    <div class="loading-spinner" *ngIf="isLoading">
+      <mat-spinner diameter="40"></mat-spinner>
+    </div>
+  
+    <div class="pricing-grid" *ngIf="!isLoading">
+      <mat-card class="pricing-card" *ngFor="let product of filteredProducts" [attr.data-category]="getProductCategory(product)">
+        <mat-card-header>
+          <mat-icon mat-card-avatar>{{categories.find(c => c.id === getProductCategory(product))?.icon || 'inventory_2'}}</mat-icon>
+          <mat-card-title>{{product.name}}</mat-card-title>
+          <mat-card-subtitle>{{getProductCategory(product) | titlecase}}</mat-card-subtitle>
+        </mat-card-header>
+        
+        <mat-card-content>
+          <div class="price-tag">
+            <span class="currency">$</span>
+            <span class="amount">{{product.price}}</span>
+            <span class="period">/day</span>
+          </div>
+          
+          <p class="description">{{product.description}}</p>
+          
+          <div class="features">
+            <div class="feature">
+              <mat-icon>inventory_2</mat-icon>
+              <span>Stock Available: {{product.stockQuantity}}</span>
+            </div>
+            <div class="feature">
+              <mat-icon>local_shipping</mat-icon>
+              <span>Free Delivery & Setup</span>
+            </div>
+            <div class="feature">
+              <mat-icon>support_agent</mat-icon>
+              <span>24/7 Support</span>
+            </div>
+          </div>
+        </mat-card-content>
+  
+        <mat-card-actions>
+          <button mat-raised-button color="primary" (click)="navigateToOrder()">
+            Rent Now
+          </button>
+          <button mat-stroked-button color="primary" [routerLink]="['/gallery']">
+            View Details
+          </button>
+        </mat-card-actions>
+  
+        <mat-card-footer *ngIf="product.stockQuantity < 10" class="stock-warning">
+          <mat-icon>warning</mat-icon>
+          Low stock - Only {{product.stockQuantity}} items left
+        </mat-card-footer>
+      </mat-card>
+    </div>
+  </div>

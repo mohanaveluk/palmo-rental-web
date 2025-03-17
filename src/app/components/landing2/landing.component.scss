@@ -1,0 +1,222 @@
+.landing-page {
+  section {
+    padding: 64px 16px;
+    overflow: hidden; // Prevent horizontal scrollbar during animations
+    
+    @media (min-width: 768px) {
+      padding: 80px 32px;
+    }
+
+    h2 {
+      text-align: center;
+      font-size: 2rem;
+      margin-bottom: 48px;
+      color: #333;
+    }
+  }
+
+  // Hero Section
+  .hero {
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+                url('https://images.unsplash.com/photo-1519167758481-83f550bb49b3?auto=format&fit=crop&q=80&w=2000');
+    background-size: cover;
+    background-position: center;
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    position: relative;
+
+    .hero-content {
+      max-width: 800px;
+      padding: 0 16px;
+      position: relative;
+      z-index: 2;
+
+      h1 {
+        font-size: 2.5rem;
+        margin-bottom: 24px;
+        
+        @media (min-width: 768px) {
+          font-size: 3.5rem;
+        }
+      }
+
+      p {
+        font-size: 1.2rem;
+        margin-bottom: 32px;
+        
+        @media (min-width: 768px) {
+          font-size: 1.5rem;
+        }
+      }
+
+      button {
+        padding: 12px 32px;
+        font-size: 1.2rem;
+      }
+    }
+  }
+
+  // Categories Section
+  .categories-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 32px;
+    padding: 0 16px;
+
+    .category-card {
+      transition: transform 0.3s ease;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      
+      &:hover {
+        transform: translateY(-8px);
+      }
+
+      img {
+        height: 200px;
+        object-fit: cover;
+        width: 100%;
+      }
+
+      mat-card-content {
+        flex-grow: 1;
+        padding: 16px;
+
+        h3 {
+          font-size: 1.5rem;
+          margin: 16px 0;
+          color: #333;
+        }
+
+        p {
+          color: #666;
+          margin-bottom: 16px;
+        }
+      }
+
+      mat-card-actions {
+        padding: 16px;
+      }
+    }
+  }
+
+  // Features Section
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 32px;
+    text-align: center;
+    padding: 0 16px;
+
+    .feature {
+      padding: 24px;
+
+      mat-icon {
+        font-size: 48px;
+        height: 48px;
+        width: 48px;
+        color: #3f51b5;
+        margin-bottom: 16px;
+      }
+
+      h3 {
+        font-size: 1.2rem;
+        margin-bottom: 12px;
+        color: #333;
+      }
+
+      p {
+        color: #666;
+      }
+    }
+  }
+
+  // Testimonials Section
+  .testimonials {
+    background-color: #f8f9fa;
+    position: relative;
+    
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 32px;
+      padding: 0 16px;
+
+      .testimonial-card {
+        height: 100%;
+        background: white;
+        transform-origin: center;
+
+        mat-card-header {
+          margin-bottom: 16px;
+
+          img {
+            width: 48px;
+            height: 48px;
+            object-fit: cover;
+            border-radius: 50%;
+          }
+        }
+
+        mat-card-content {
+          p {
+            font-style: italic;
+            color: #666;
+          }
+        }
+      }
+    }
+  }
+
+  // CTA Section
+  .cta {
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+                url('https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?auto=format&fit=crop&q=80&w=2000');
+    background-size: cover;
+    background-position: center;
+    color: white;
+    text-align: center;
+    position: relative;
+
+    .cta-content {
+      max-width: 600px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 2;
+
+      h2 {
+        color: white;
+        margin-bottom: 24px;
+      }
+
+      p {
+        font-size: 1.2rem;
+        margin-bottom: 32px;
+      }
+
+      button {
+        padding: 12px 32px;
+        font-size: 1.2rem;
+      }
+    }
+  }
+}
+
+// Force hardware acceleration for smoother animations
+[data-aos] {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+  will-change: transform, opacity;
+}
+
+// Optimize animations performance
+.testimonials [data-aos] {
+  transform: translate3d(0, 30px, 0);
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}

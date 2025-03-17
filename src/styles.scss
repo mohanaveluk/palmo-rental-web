@@ -1,0 +1,272 @@
+@use '@angular/material' as mat;
+
+@include mat.core();
+
+$primary-palette: mat.define-palette(mat.$indigo-palette);
+$primary: mat.define-palette(mat.$indigo-palette);
+
+$accent-palette: mat.define-palette(mat.$pink-palette, A200, A100, A400);
+$warn-palette: mat.define-palette(mat.$red-palette);
+
+$theme: mat.define-light-theme((
+  color: (
+    primary: $primary-palette,
+    accent: $accent-palette,
+    warn: $warn-palette,
+  ),
+  typography: mat.define-typography-config(),
+  density: 0,
+));
+
+@include mat.all-component-themes($theme);
+@include mat.all-component-typographies($theme);
+@include mat.form-field-theme($theme);
+
+
+html, body {
+  height: 100%;
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  -webkit-text-size-adjust: 100%;
+  overflow-x: hidden; // Prevent horizontal scrollbar
+
+}
+
+// Custom variables
+:root {
+  --spacing-xs: 0.25rem;
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 1.5rem;
+  --spacing-xl: 2rem;
+  --spacing-x2: 5rem;
+
+}
+
+// Utility classes
+.container {
+  padding: 0px;
+  max-width: 100%;
+  margin: 0 auto;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+// Mobile-first approach
+.mat-mdc-form-field {
+  width: 100%;
+}
+
+.loading-spinner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+// Responsive table styles
+.responsive-table {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  
+  table {
+    min-width: 100%;
+  }
+}
+
+// Responsive breakpoints
+@mixin for-tablet-up {
+  @media (min-width: 768px) { @content; }
+}
+
+@mixin for-desktop-up {
+  @media (min-width: 1024px) { @content; }
+}
+
+// Responsive grid system
+.grid {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: 1fr;
+
+  @include for-tablet-up {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include for-desktop-up {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+// Mobile-friendly button styles
+.mobile-button {
+  min-width: 44px !important;
+  min-height: 44px !important;
+  
+  &.mat-mdc-icon-button {
+    width: 44px;
+    height: 44px;
+    line-height: 44px;
+    
+    .mat-icon {
+      font-size: 24px;
+      line-height: 24px;
+      height: 24px;
+      width: 24px;
+    }
+  }
+}
+
+// Touch-friendly spacing
+.touch-friendly {
+  padding: 12px;
+  margin: 8px 0;
+  
+  .mat-mdc-button,
+  .mat-mdc-raised-button,
+  .mat-mdc-stroked-button,
+  .mat-mdc-flat-button {
+    padding: 8px 16px;
+    line-height: 36px;
+  }
+}
+
+// Form field styles
+.responsive-text {
+  .mat-mdc-form-field {
+    width: 100%;
+    font-size: 14px;
+    margin-bottom: 16px;
+  }
+
+  .mat-mdc-dialog-container {
+    .mat-mdc-dialog-content {
+      line-height: 1.5;
+      max-height: 80vh;
+
+      @include for-tablet-up {
+        font-size: 16px;
+        padding: 16px;
+      }
+    }
+  }
+}
+
+// Responsive typography
+.responsive-text {
+  font-size: 14px;
+  line-height: 1.5;
+  
+  @include for-tablet-up {
+    font-size: 16px;
+  }
+}
+
+// Mobile-friendly card styles
+.mobile-card {
+  margin: 8px 0;
+  border-radius: 8px;
+  
+  .mat-mdc-card-header {
+    padding: 16px 16px 0;
+  }
+  
+  .mat-mdc-card-content {
+    padding: 16px;
+  }
+  
+  .mat-mdc-card-actions {
+    padding: 8px;
+    display: flex;
+    justify-content: flex-end;
+    gap: 8px;
+  }
+}
+
+// Hide scrollbars but keep functionality
+.scrollable {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+  
+  &::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera */
+  }
+}
+
+// Responsive form layout
+.form-row {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 26px;
+
+  @include for-tablet-up {
+    flex-direction: row;
+    
+    .mat-mdc-form-field {
+      flex: 1;
+      margin-bottom: 0;
+    }
+  }
+}
+
+// Bottom navigation for mobile
+.mobile-bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: white;
+  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  display: flex;
+  justify-content: space-around;
+  padding: 8px 0;
+  
+  @include for-tablet-up {
+    display: none;
+  }
+}
+
+// Add padding to main content to account for bottom navigation
+.has-bottom-nav {
+  padding-bottom: 64px;
+  
+  @include for-tablet-up {
+    padding-bottom: 16px;
+  }
+}
+
+/*
+// AOS animations
+.has-bottom-nav {
+  [data-aos] {
+    padding-bottom: 64px;
+    pointer-events: none;
+
+    &.aos-animate {
+      pointer-events: auto;
+    }
+  }
+
+  // Fix sidenav container height
+  .sidenav-container {
+    height: calc(100vh - 64px) !important;
+
+
+    @include for-tablet-up {
+      @media (max-width: 599px) {
+        padding-bottom: 16px;
+        height: calc(100vh - 56px) !important;
+      }
+    }
+  }
+
+  // Fix content container
+  .mat-sidenav-content {
+    overflow-x: hidden; // Prevent horizontal scrollbar
+  }
+}
+
+*/

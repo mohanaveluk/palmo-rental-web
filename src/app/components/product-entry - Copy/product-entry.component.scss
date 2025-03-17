@@ -1,0 +1,40 @@
+.product-entry-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  mat-card {
+    margin-bottom: 20px;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 16px;
+  }
+
+  .button-container {
+    display: flex;
+    gap: 8px;
+    justify-content: flex-end;
+    margin-top: 16px;
+  }
+
+  .products-table {
+    width: 100%;
+
+    .mat-column-actions {
+      width: 80px;
+      text-align: center;
+    }
+
+    .mat-column-price {
+      width: 120px;
+    }
+
+    .mat-column-stockQuantity {
+      width: 100px;
+    }
+  }
+}

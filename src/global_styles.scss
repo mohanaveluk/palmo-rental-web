@@ -1,0 +1,172 @@
+@use '@angular/material' as mat;
+/*@import 'aos/dist/aos.css';*/
+
+@include mat.core();
+
+$primary-palette: mat.define-palette(mat.$indigo-palette);
+$accent-palette: mat.define-palette(mat.$pink-palette, A200, A100, A400);
+$warn-palette: mat.define-palette(mat.$red-palette);
+
+$theme: mat.define-light-theme((
+  color: (
+    primary: $primary-palette,
+    accent: $accent-palette,
+    warn: $warn-palette,
+  ),
+  typography: mat.define-typography-config(),
+  density: 0,
+));
+
+@include mat.all-component-themes($theme);
+@include mat.all-component-typographies($theme);
+@include mat.form-field-theme($theme);
+
+html, body {
+  height: 100%;
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  -webkit-text-size-adjust: 100%;
+}
+
+.container {
+  padding: 16px;
+  max-width: 1200px;
+  margin: 0 auto;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.mat-mdc-form-field {
+  width: 100%;
+}
+
+.loading-spinner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+// Responsive table styles
+.responsive-table {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  
+  table {
+    min-width: 100%;
+  }
+}
+
+// Responsive breakpoints
+@mixin for-tablet-up {
+  @media (min-width: 768px) { @content; }
+}
+
+@mixin for-desktop-up {
+  @media (min-width: 1024px) { @content; }
+}
+
+// Responsive grid system
+.grid {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: 1fr;
+
+  @include for-tablet-up {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include for-desktop-up {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+// Mobile-friendly button styles
+.mobile-button {
+  min-width: 44px !important;
+  min-height: 44px !important;
+  
+  &.mat-mdc-icon-button {
+    width: 44px;
+    height: 44px;
+    line-height: 44px;
+    
+    .mat-icon {
+      font-size: 24px;
+      line-height: 24px;
+      height: 24px;
+      width: 24px;
+    }
+  }
+}
+
+// Touch-friendly spacing
+.touch-friendly {
+  padding: 12px;
+  margin: 8px 0;
+  
+  .mat-mdc-button,
+  .mat-mdc-raised-button,
+  .mat-mdc-stroked-button,
+  .mat-mdc-flat-button {
+    padding: 8px 16px;
+    line-height: 36px;
+  }
+}
+
+// Form field styles
+.mat-mdc-form-field {
+  width: 100%;
+  margin-bottom: 16px;
+}
+
+.mat-mdc-dialog-container {
+  .mat-mdc-dialog-content {
+    max-height: 80vh;
+    padding: 16px;
+  }
+}
+
+// Form row layout
+.form-row {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 16px;
+  
+  @include for-tablet-up {
+    flex-direction: row;
+    
+    .mat-mdc-form-field {
+      flex: 1;
+      margin-bottom: 0;
+    }
+  }
+}
+
+// Card styles
+.mat-mdc-card {
+  margin-bottom: 16px;
+  
+  .mat-mdc-card-header {
+    padding: 16px;
+  }
+  
+  .mat-mdc-card-content {
+    padding: 0 16px 16px;
+  }
+  
+  .mat-mdc-card-actions {
+    padding: 8px;
+    margin: 0;
+  }
+}
+
+// AOS animations
+[data-aos] {
+  pointer-events: none;
+  &.aos-animate {
+    pointer-events: auto;
+  }
+}

@@ -1,0 +1,23 @@
+<div class="gallery-container">
+  <div class="category-filters">
+    <mat-button-toggle-group [(ngModel)]="selectedCategory">
+      <mat-button-toggle *ngFor="let category of categories" [value]="category">
+        {{category}}
+      </mat-button-toggle>
+    </mat-button-toggle-group>
+  </div>
+
+  <div class="gallery-grid">
+    <mat-card class="gallery-card" *ngFor="let item of filteredItems" (click)="openImageDialog(item)"
+              [attr.data-aos]="'fade-up'">
+      <img mat-card-image [src]="item.image + '?auto=format&fit=crop&w=800'" [alt]="item.title">
+      <mat-card-content>
+        <h3>{{item.title}}</h3>
+        <p>{{item.description}}</p>
+        <mat-chip-set>
+          <mat-chip>{{item.category}}</mat-chip>
+        </mat-chip-set>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

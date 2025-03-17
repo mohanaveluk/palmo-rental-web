@@ -1,0 +1,20 @@
+<div class="thank-you-container">
+  <mat-card>
+    <mat-card-content>
+      <div class="content">
+        <mat-icon class="success-icon">check_circle</mat-icon>
+        <h1>Thank You!</h1>
+        <p>Your order has been successfully created.</p>
+        <p>We'll touch base with you shortly.</p>
+        <div class="button-container">
+          <button mat-raised-button color="primary" (click)="viewOrders()">
+            View Orders
+          </button>
+          <button mat-button (click)="createNewOrder()">
+            Create Another Order
+          </button>
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>
