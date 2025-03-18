@@ -26,7 +26,7 @@
     <div class="pricing-grid" *ngIf="!isLoading">
       <mat-card class="pricing-card" *ngFor="let product of filteredProducts" [attr.data-category]="getProductCategory(product)">
         <mat-card-header>
-          <mat-icon mat-card-avatar>{{categories.find(c => c.id === getProductCategory(product))?.icon || 'inventory_2'}}</mat-icon>
+          <mat-icon mat-card-avatar>{{getCategoryIcon(product)}}</mat-icon>
           <mat-card-title>{{product.name}}</mat-card-title>
           <mat-card-subtitle>{{getProductCategory(product) | titlecase}}</mat-card-subtitle>
         </mat-card-header>

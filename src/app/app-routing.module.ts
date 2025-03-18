@@ -10,28 +10,33 @@ import { ModernHomeComponent } from './components/modern-home/modern-home.compon
 import { ProductGalleryComponent } from './components/product-gallery/product-gallery.component';
 import { PagesComponent } from './pages/pages.component';
 import { OrderDetailsComponent } from './components/order-details/order-details.component';
+import { ProductPricingComponent } from './components/product-pricing/product-pricing.component';
+import { AboutUsComponent } from './components/about-us/about-us.component';
 
 const routes: Routes = [
   {
     path: "", component: PagesComponent, children: [
       { path: 'old', component: LandingHomeComponent },
       { path: '', component: ModernHomeComponent },
+      { path: 'about', component: AboutUsComponent },
       { path: 'products/gallery', component: ProductGalleryComponent },
       { path: 'orders/new', component: OrderEntryComponent },
       { path: 'orders/thank-you', component: OrderThankYouComponent },
       { path: 'orders/:id', component: OrderDetailsComponent },
+      { path: 'pricing', component: ProductPricingComponent },
     ]
   },
   {
     path: "admview", component: PagesComponent, children: [
       { path: '', component: ModernHomeComponent },
+      { path: 'about', component: AboutUsComponent },
       { path: 'products', component: ProductEntryComponent },
       { path: 'products/gallery', component: ProductGalleryComponent },
       { path: 'orders/new', component: OrderEntryComponent },
       { path: 'orders/thank-you', component: OrderThankYouComponent },
       { path: 'ordersdb', component: OrderDashboardComponent },
       { path: 'orders/:id', component: OrderDetailsComponent },
-//      { path: 'pricing', component: ProductPricingComponent },
+      { path: 'pricing', component: ProductPricingComponent },
 
     ]
   },

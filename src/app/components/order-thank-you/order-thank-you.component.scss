@@ -1,8 +1,10 @@
 .thank-you-container {
+
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 400px;
+  min-height: calc(100vh - 200px);
+
 
   mat-card {
     max-width: 400px;

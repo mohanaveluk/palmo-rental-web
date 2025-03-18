@@ -49,10 +49,13 @@ import { PagesComponent } from './pages/pages.component';
 import { Nav2Component } from './shared/components/nav2/nav2.component';
 import { ProductEntryDialogComponent } from './components/product-entry/product-entry-dialog/product-entry-dialog.component';
 import { OrderDetailsComponent } from './components/order-details/order-details.component';
+import { ProductPricingComponent } from './components/product-pricing/product-pricing.component';
+import { AboutUsComponent } from './components/about-us/about-us.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    AboutUsComponent,
     ProductEntryComponent,
     ProductEntryDialogComponent,
     OrderEntryComponent,
@@ -68,7 +71,7 @@ import { OrderDetailsComponent } from './components/order-details/order-details.
     ImageDialogComponent,
     PagesComponent,
     Nav2Component,
-    //ProductPricingComponent,
+    ProductPricingComponent,
     FooterComponent
   ],
   imports: [
