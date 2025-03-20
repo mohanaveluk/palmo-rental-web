@@ -34,14 +34,25 @@
           </mat-nav-list>
         </mat-expansion-panel> -->
   
+        <mat-expansion-panel *ngIf = "!isAdmin">
+          <mat-expansion-panel-header>
+            <mat-panel-title>Support</mat-panel-title>
+          </mat-expansion-panel-header>
+          <mat-nav-list>
+            <a mat-list-item routerLink="/pricing">Pricing</a>
+            <a mat-list-item routerLink="/contact">Contact</a>
+            <a mat-list-item routerLink="/faq">FAQ</a>
+          </mat-nav-list>
+        </mat-expansion-panel>
+
         <mat-expansion-panel *ngIf="isAdmin">
           <mat-expansion-panel-header>
             <mat-panel-title>Support</mat-panel-title>
           </mat-expansion-panel-header>
           <mat-nav-list>
-            <a mat-list-item routerLink="/admview/pricing/plans">Pricing</a>
-            <a mat-list-item routerLink="/admview/pricing/contact">Contact</a>
-            <a mat-list-item routerLink="/admview/pricing/faq">FAQ</a>
+            <a mat-list-item routerLink="/admview/pricing">Pricing</a>
+            <a mat-list-item routerLink="/admview/contact">Contact</a>
+            <a mat-list-item routerLink="/admview/faq">FAQ</a>
           </mat-nav-list>
         </mat-expansion-panel>
       </mat-nav-list>
@@ -102,13 +113,24 @@
           
     
           <!-- Support Dropdown -->
-          <button mat-button [matMenuTriggerFor]="supportMenu">
+          <button mat-button [matMenuTriggerFor]="supportMenu" *ngIf = "!isAdmin">
+            <div class="menu-item">
+                <span>Support</span> <mat-icon style="margin: 0px -2px">arrow_drop_down</mat-icon>
+              </div>          
+          </button>
+          <mat-menu #supportMenu="matMenu">
+            <a mat-menu-item routerLink="/pricing">Pricing</a>
+            <a mat-menu-item routerLink="/contact">Contact Us</a>
+            <a mat-menu-item routerLink="/faq">FAQ</a>
+          </mat-menu>
+          
+          <button mat-button [matMenuTriggerFor]="supportMenuadm" *ngIf="isAdmin">
               <div class="menu-item">
                   <span>Support</span> <mat-icon style="margin: 0px -2px">arrow_drop_down</mat-icon>
                 </div>          
           </button>
-          <mat-menu #supportMenu="matMenu">
-            <a mat-menu-item routerLink="/admview/pricing/plans">Pricing</a>
+          <mat-menu #supportMenuadm="matMenu">
+            <a mat-menu-item routerLink="/admview/pricing">Pricing</a>
             <a mat-menu-item routerLink="/admview/contact">Contact Us</a>
             <a mat-menu-item routerLink="/admview/faq">FAQ</a>
           </mat-menu>

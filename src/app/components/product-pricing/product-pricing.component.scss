@@ -45,7 +45,7 @@
   
     .pricing-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
       gap: 24px;
   
       .pricing-card {
@@ -61,7 +61,8 @@
   
         mat-card-header {
           padding: 24px 24px 0;
-  
+          min-height: 5rem;
+          
           mat-icon {
             color: #1a237e;
             font-size: 24px;
