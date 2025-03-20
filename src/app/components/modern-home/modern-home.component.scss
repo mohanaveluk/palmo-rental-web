@@ -358,6 +358,14 @@
 // Responsive adjustments
 @media (max-width: 768px) {
   .hero {
+    position: relative;
+    height: 100vh;
+    width: calc(100vw - 1rem);
+    margin-left: calc(-50vw + 50%);
+    margin-right: calc(-50vw + 50%);
+    overflow: hidden;
+    justify-self: center;
+
     .hero-content {
       .cta-buttons {
         flex-direction: column;
