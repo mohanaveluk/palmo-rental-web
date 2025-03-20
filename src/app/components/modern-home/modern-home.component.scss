@@ -4,7 +4,7 @@
 .hero {
   position: relative;
   height: 100vh; // Changed to 100vh for full viewport height
-  width: calc(100vw - 3rem); // Added full viewport width
+  width: calc(100vw - 2rem); // Added full viewport width
   margin-left: calc(-50vw + 50%); // Compensate for container margins
   margin-right: calc(-50vw + 50%);
   overflow: hidden;
