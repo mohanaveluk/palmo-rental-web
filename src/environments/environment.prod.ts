@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiUrl: 'http://localhost:3000/api' // Update this with your production API URL
+  apiUrl: 'https://rental-nest-api-384784314380.us-central1.run.app/api' // Update this with your production API URL
 };
