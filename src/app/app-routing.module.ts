@@ -12,6 +12,8 @@ import { PagesComponent } from './pages/pages.component';
 import { OrderDetailsComponent } from './components/order-details/order-details.component';
 import { ProductPricingComponent } from './components/product-pricing/product-pricing.component';
 import { AboutUsComponent } from './components/about-us/about-us.component';
+import { FaceDetectionComponent } from './components/face-detection/face-detection.component';
+import { FaceDetectionComponent1 } from './components/face-detection1/face-detection.component1';
 
 const routes: Routes = [
   {
@@ -37,6 +39,8 @@ const routes: Routes = [
       { path: 'ordersdb', component: OrderDashboardComponent },
       { path: 'orders/:id', component: OrderDetailsComponent },
       { path: 'pricing', component: ProductPricingComponent },
+      { path: 'face-detection', component: FaceDetectionComponent },
+      { path: 'face-detection1', component: FaceDetectionComponent1 }
 
     ]
   },

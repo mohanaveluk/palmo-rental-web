@@ -1,0 +1,31 @@
+<div class="face-detection-container">
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>Face Detection</mat-card-title>
+        <mat-card-subtitle>Real-time face detection using MediaPipe</mat-card-subtitle>
+      </mat-card-header>
+  
+      <mat-card-content>
+        <div class="video-container">
+          <video #videoElement autoplay playsinline muted></video>
+          <canvas #canvasElement></canvas>
+        </div>
+  
+        <div class="status-container" [ngClass]="{'success': detectionSuccess}">
+          <mat-icon>{{ detectionSuccess ? 'check_circle' : 'face' }}</mat-icon>
+          <span>{{ detectionSuccess ? 'Face Detected!' : 'Waiting for face...' }}</span>
+        </div>
+      </mat-card-content>
+  
+      <mat-card-actions>
+        <button mat-raised-button color="primary" (click)="startDetection()" [disabled]="isDetecting">
+          <mat-icon>videocam</mat-icon>
+          Start Detection
+        </button>
+        <button mat-raised-button color="warn" (click)="stopDetection()" [disabled]="!isDetecting">
+          <mat-icon>videocam_off</mat-icon>
+          Stop Detection
+        </button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
