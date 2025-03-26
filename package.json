@@ -22,23 +22,25 @@
     "@angular/platform-browser-dynamic": "^17.0.0",
     "@angular/router": "^17.0.0",
     "@auth0/angular-jwt": "^5.2.0",
+    "@mediapipe/face_detection":  "0.4.1646425229",
+    "@mediapipe/camera_utils": "0.3.1620248257",
+    "@mediapipe/drawing_utils": "0.3.1620248257",
     "class-transformer": "^0.5.1",
     "class-validator": "^0.14.0",
     "file-saver": "^2.0.5",
+    "jwt-decode": "^4.0.0",
     "papaparse": "^5.4.1",
     "reflect-metadata": "^0.1.13",
     "rxjs": "~7.8.0",
     "sweetalert2": "^11.14.5",
     "swiper": "^11.0.5",
     "tslib": "^2.3.0",
-    "zone.js": "~0.14.2",
-    "jwt-decode": "^4.0.0"
+    "zone.js": "~0.14.2"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^17.0.0",
     "@angular/cli": "^17.0.0",
     "@angular/compiler-cli": "^17.0.0",
-
     "@types/jasmine": "~4.3.0",
     "jasmine-core": "~4.6.0",
     "karma": "~6.4.0",

@@ -11,7 +11,8 @@ import { ViewportScroller } from '@angular/common';
 })
 export class AppComponent implements OnInit{
   @ViewChild('sidenav') sidenav!: MatSidenav;
-  title = 'Palmo Rentals';
+  title = 'Next Event';
+  subtitle = 'Party Supplies';
   
   constructor(private breakpointObserver: BreakpointObserver, private router: Router, private viewportScroller: ViewportScroller) {
     /*

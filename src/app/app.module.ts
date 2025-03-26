@@ -51,6 +51,8 @@ import { ProductEntryDialogComponent } from './components/product-entry/product-
 import { OrderDetailsComponent } from './components/order-details/order-details.component';
 import { ProductPricingComponent } from './components/product-pricing/product-pricing.component';
 import { AboutUsComponent } from './components/about-us/about-us.component';
+import { FaceDetectionComponent } from './components/face-detection/face-detection.component';
+import { FaceDetectionComponent1 } from './components/face-detection1/face-detection.component1';
 
 @NgModule({
   declarations: [
@@ -72,7 +74,9 @@ import { AboutUsComponent } from './components/about-us/about-us.component';
     PagesComponent,
     Nav2Component,
     ProductPricingComponent,
-    FooterComponent
+    FooterComponent,
+    FaceDetectionComponent,
+    FaceDetectionComponent1
   ],
   imports: [
     BrowserModule,

@@ -26,7 +26,7 @@ export class AboutUsComponent {
       name: 'Sarah Johnson',
       role: 'Founder & CEO',
       image: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=400',
-      bio: 'With over 15 years in event planning, Sarah founded Palmo Rentals to revolutionize the event rental industry.'
+      bio: 'With over 15 years in event planning, Sarah founded Next Event to revolutionize the event rental industry.'
     },
     {
       name: 'Michael Chen',
@@ -52,7 +52,7 @@ export class AboutUsComponent {
     {
       year: 2018,
       title: 'Company Founded',
-      description: 'Palmo Rentals was established with a vision to transform event rentals.',
+      description: 'NextEvent was established with a vision to transform event rentals.',
       icon: 'foundation'
     },
     {
